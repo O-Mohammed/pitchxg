@@ -1,24 +1,12 @@
 Package: pitchxg
-Title: Pitch xG
 Version: 0.0.0.9000
 Authors@R: 
     person("Ozayr", "Mohammed", , "ozayr.mohammed@nhs.net", role = c("aut", "cre"))
-Description: A modular Shiny app visualising shot data for the Women's EUROs 
-2025 using StatsBomb open data. Features interactive shot maps, player comparison tables,
+Title: Pitch xG
+Description: A modular Shiny app visualising shot data for the Womens EUROS 2025
+  using StatsBomb open data. Features interactive shot maps, player comparison tables,
     xG vs goals summaries, and explanatory captions for actionable
     insights.
-License: What license is it under?
 URL: https://github.com/O-Mohammed/pitch-xg
 BugReports: https://github.com/O-Mohammed/pitch-xg/issues
-Imports: 
-    config,
-    golem,
-    shiny
-Suggests: 
-    spelling,
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
-Encoding: UTF-8
-Language: en-US
-LazyData: true
 RoxygenNote: 7.3.2
