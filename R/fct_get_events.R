@@ -25,7 +25,7 @@ get_events <- function(season_id){
                          home_team = x$home_team.country.name,
                          away_team = x$away_team.country.name,
                          competition_stage = x$competition_stage.name,
-                         shot_data = StatsBombR::get.matchFree)
+                         event_data = StatsBombR::get.matchFree(x))
                )
   
 }
