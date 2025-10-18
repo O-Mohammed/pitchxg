@@ -14,4 +14,5 @@ teams <- matches |>
   unique()
 
 saveRDS(shots, "inst/app/data/shots_womens_euro_2025.rds") 
+saveRDS(matches, "inst/app/data/matches_womens_euro_2025.rds")
 saveRDS(teams, "inst/app/data/teams_womens_euro_2025.rds")
