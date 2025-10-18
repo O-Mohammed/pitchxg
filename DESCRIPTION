@@ -3,9 +3,8 @@ Title: Pitch xG
 Version: 0.0.0.9000
 Authors@R: 
     person("Ozayr", "Mohammed", , "ozayr.mohammed@nhs.net", role = c("aut", "cre"))
-Description: A modular Shiny app visualising expected goals (xG) and
-    expected threat (xT) for a full football team season using StatsBomb
-    open data. Features interactive shot maps, player comparison tables,
+Description: A modular Shiny app visualising shot data for the Women's EUROs 
+2025 using StatsBomb open data. Features interactive shot maps, player comparison tables,
     xG vs goals summaries, and explanatory captions for actionable
     insights.
 License: What license is it under?
