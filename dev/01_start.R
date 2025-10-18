@@ -21,10 +21,10 @@
 golem::fill_desc(
   pkg_name = "pitchxg", # The name of the golem package containing the app (typically lowercase, no underscore or periods)
   pkg_title = "Pitch xG", # What the Package Does (One Line, Title Case, No Period)
-  pkg_description = "A modular Shiny app visualising expected goals (xG) and 
-  expected threat (xT) for a full football team season using StatsBomb open
-  data. Features interactive shot maps, player comparison tables, xG vs goals 
-  summaries, and explanatory captions for actionable insights.", # What the package does (one paragraph).
+  pkg_description = "A modular Shiny app visualising shot data for the Womens EUROS 2025
+  using StatsBomb open data. Features interactive shot maps, player comparison tables,
+    xG vs goals summaries, and explanatory captions for actionable
+    insights.", # What the package does (one paragraph).
   authors = person(
     given = "Ozayr", # Your First Name
     family = "Mohammed", # Your Last Name
