@@ -5,4 +5,4 @@ events <- get_events(season_id)
 
 shots <- purrr::map(events, get_shots)
 
-saveRDS(shots, "inst/extdata/shots_womens_euro_2025.rds") 
+saveRDS(shots, "inst/app/data/shots_womens_euro_2025.rds") 
