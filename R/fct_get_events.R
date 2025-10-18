@@ -4,7 +4,7 @@
 #'
 #' @param season_id Character. The season_id to return events for.
 #' 
-#' @return List. A list of tibbles. One tibble per match, containing all event 
+#' @return List. A list of metadata and tibbles. One tibble per match, containing all event 
 #'   data for that match.
 #'
 #' @export 
