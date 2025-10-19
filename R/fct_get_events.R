@@ -24,4 +24,6 @@ get_events <- function(matches){
                )
   
   names(events) <- matches$match_id
+  
+  return(events)
 }
