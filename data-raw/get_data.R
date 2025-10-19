@@ -5,7 +5,8 @@ matches <- get_matches(season_id)
 
 events <- get_events(matches)
 
-shots <- purrr::map(events, get_shots)
+shots <- events |> 
+  purrr::imap(\(x, id) get_shots(x))
 
 teams <- matches |> 
   dplyr::select(away_team.away_team_name, 
