@@ -10,8 +10,10 @@ app_ui <- function(request) {
     golem_add_external_resources(),
     # Your application UI logic
     fluidPage(
-      golem::golem_welcome_page() # Remove this line to start building your UI
-    )
+      bslib::layout_sidebar(
+        sidebar = mod_select_match_ui("select_match_1"))
+    ),
+    mod_shotmap_ui("shotmap_1")
   )
 }
 
@@ -28,7 +30,7 @@ golem_add_external_resources <- function() {
     "www",
     app_sys("app/www")
   )
-
+  
   tags$head(
     favicon(),
     bundle_resources(
