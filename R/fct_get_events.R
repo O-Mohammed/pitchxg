@@ -23,4 +23,5 @@ get_events <- function(matches){
                          event_data = StatsBombR::get.matchFree(x))
                )
   
+  names(events) <- matches$match_id
 }
