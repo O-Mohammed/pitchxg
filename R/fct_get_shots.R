@@ -10,8 +10,11 @@
 #' that match.
 #'
 #' @export
-get_shots <- function(events) {
-  events |> 
+get_shots <- function(event) {
+  
+  metadata <- event[!names(event) %in% "event_data"]
+  
+  shot_data <- event[["event_data"]] |> 
     dplyr::select(c("timestamp", 
                     "location", 
                     "possession",
@@ -24,5 +27,6 @@ get_shots <- function(events) {
                   "xG" = shot.statsbomb_xg) |> 
     dplyr::mutate(goal = dplyr::if_else(shot.outcome.id == 97, "Goal", "No goal"))
   
-  
+  c(metadata,
+    list(shot_data = shot_data))
 }
