@@ -9,12 +9,19 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      bslib::layout_sidebar(
-        sidebar = mod_select_match_ui("select_match_1"))
-    ),
-    mod_shotmap_ui("shotmap_1")
+    shiny::fluidPage(
+      bslib::card(
+        full_screen = TRUE,
+        bslib::card_header(htmltools::h1("Shotmap")), 
+        bslib::layout_sidebar(
+          sidebar = mod_select_match_ui("select_match_1"),
+          mod_shotmap_ui("shotmap_1")
+          
+        )
+      )
+    )
   )
+  
 }
 
 #' Add external Resources to the Application
