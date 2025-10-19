@@ -9,12 +9,36 @@ app_ui <- function(request) {
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # Your application UI logic
-    fluidPage(
-      bslib::layout_sidebar(
-        sidebar = mod_select_match_ui("select_match_1"))
-    ),
-    mod_shotmap_ui("shotmap_1")
+    shiny::fluidPage(
+      theme = bslib::bs_theme(),
+      bslib::page_navbar(
+        title = "pitchxg",
+        bslib::nav_panel(
+          title = "Shotmap",
+          bslib::card(
+            full_screen = TRUE,
+            bslib::layout_sidebar(
+              sidebar = mod_select_match_ui("select_match_1"),
+              mod_shotmap_ui("shotmap_1")
+            )
+            
+          )
+        ),
+        bslib::nav_spacer(),
+        bslib::nav_item(
+          bslib::input_dark_mode()
+        ),
+        bslib::nav_item(
+          shiny::a(
+            href = "https://github.com/O-Mohammed/pitchxg",
+            target = "_blank",
+            shiny::icon("github", class = "fa-xl")
+          )
+        )
+      )
+    )
   )
+  
 }
 
 #' Add external Resources to the Application

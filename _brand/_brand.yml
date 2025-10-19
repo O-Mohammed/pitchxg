@@ -1,0 +1,24 @@
+meta:
+  name:    
+    full: "pitchxg brand"
+  link:
+    github: https://github.com/O-Mohammed/pitchxg
+
+color:
+  palette:
+    yellow: "#f9bd07"    
+    white: "#f5f4f3"
+    blue: "#5881c1"    
+    charcoal: "#1E1E1E"
+    offwhite: "#E6E6E6"
+    gold: "#D4AF37"
+    dark-grey: "#262626"
+  foreground: charcoal
+  background: offwhite
+  primary: gold
+  secondary: dark-grey
+  info: blue
+  
+typography:
+  link:
+    color: info
