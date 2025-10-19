@@ -4,10 +4,10 @@
 \alias{get_events}
 \title{Fetch events for a specified season_id using StatsBombR}
 \usage{
-get_events(season_id)
+get_events(matches)
 }
 \arguments{
-\item{season_id}{Character. The season_id to return events for.}
+\item{matches}{A tibble. The output of `get_matches`.}
 }
 \value{
 List. A list of metadata and tibbles. One tibble per match, containing all event 
