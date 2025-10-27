@@ -10,7 +10,14 @@
 mod_shotmap_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    shiny::plotOutput(ns("shotmap"))
+    shiny::fluidRow(
+      shiny::column(width = 6, 
+                    shiny::plotOutput(ns("shotmap_1"))
+                    ),
+      shiny::column(width = 6,
+                    shiny::plotOutput(ns("shotmap_2"))
+    )
+    )
   )
 }
     
@@ -23,14 +30,12 @@ mod_shotmap_server <- function(id, selected){
     
     shot_data <- readRDS("inst/app/data/shots_womens_euro_2025.rds")
 
-    output$shotmap <- shiny::renderPlot({
-      shiny::req(selected$match())
-
-      plot_data <- shot_data[[as.character(selected$match())]][["shot_data"]]
-
-      SBpitch::create_Pitch(grass_colour = "grey30",
-                            background_colour = "grey30",
-                            line_colour = "grey80")+
+    plot_shotmap <- function(plot_data){
+      
+    #  p <- 
+        SBpitch::create_Pitch(grass_colour = "grey30",
+                                 background_colour = "grey30",
+                                 line_colour = "grey80")+
         ggplot2::geom_point(data = plot_data,
                             ggplot2::aes(x, y,
                                          fill = goal,
@@ -46,6 +51,27 @@ mod_shotmap_server <- function(id, selected){
                                                         fill = alpha("grey40", 0.5)),
                        legend.key = element_rect(fill = NA, colour = NA))+
         ggplot2::guides(fill = ggplot2::guide_legend(override.aes = list(size = 6)))
+      
+      #return(p)
+    } 
+    
+    
+    output$shotmap_1 <- shiny::renderPlot({
+      shiny::req(selected$match())
+
+      plot_data <- shot_data[[as.character(selected$match())]][["shot_data"]]
+
+      plot_shotmap(plot_data)
+      
+    })
+    
+    output$shotmap_2 <- shiny::renderPlot({
+      shiny::req(selected$match())
+      
+      plot_data <- shot_data[[as.character(selected$match())]][["shot_data"]]
+      
+      plot_shotmap(plot_data)
+      
     })
     
     
