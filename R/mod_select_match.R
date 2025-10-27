@@ -10,16 +10,31 @@
 match_data <- readRDS("inst/app/data/matches_womens_euro_2025.rds")
 team_names <- readRDS("inst/app/data/teams_womens_euro_2025.rds")
 
+match_lookup <- match_data |> 
+  dplyr::select(match_id, 
+                home_team.country.name, 
+                away_team.country.name,
+                competition_stage.name
+                ) |> 
+  dplyr::mutate(label = paste(home_team.country.name,
+                              "V",
+                              away_team.country.name,
+                              paste0("(",
+                                     competition_stage.name,
+                                     ")")
+                              ))
+
 mod_select_match_ui <- function(id) {
   ns <- NS(id)
   tagList(
+    shinyjs::useShinyjs(),
     shiny::selectInput(ns("select_match"), 
                        label = "Select match",
-                       choices = unique(match_data$match_id),
-                       selected = "4020846"),
-    shiny::selectInput(ns("select_team"), 
+                       choices = match_lookup$label),
+    shinyjs::disabled(shiny::selectInput(ns("select_team"), 
                        label = "Select team",
                        choices = team_names)
+    )
  
   )
 }
@@ -31,7 +46,9 @@ mod_select_match_server <- function(id){
   moduleServer(id, function(input, output, session){
     ns <- session$ns
     
-    selected_match <- shiny::reactive(input$select_match)
+    selected_match <- shiny::reactive(match_lookup |> 
+                                        dplyr::filter(label %in% input$select_match) |> 
+                                        dplyr::pull(match_id))
     selected_team <- shiny::reactive(input$select_team)
 
     list(
