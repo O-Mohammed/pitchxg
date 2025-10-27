@@ -3,6 +3,12 @@
 
 # pitchxg
 
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+<!-- badges: end -->
+
 ## A Shiny app for exploring expected goals (xG) using StatsBomb open data
 
 {pitchxg} is a prototype Shiny app built with `{golem}` for analysing
