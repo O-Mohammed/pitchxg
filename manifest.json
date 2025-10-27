@@ -1445,23 +1445,6 @@
         "Built": "R 4.5.1; ; 2025-10-06 02:11:49 UTC; windows"
       }
     },
-    "pitchxg": {
-      "Source": "github",
-      "Repository": null,
-      "description": {
-        "Package": "pitchxg",
-        "Title": "Pitch xG",
-        "Version": "0.0.0.9000",
-        "Authors@R": "person(\"Ozayr\", \"Mohammed\", , \"ozayr.mohammed@nhs.net\", role = c(\"aut\", \"cre\"))",
-        "Description": "A modular Shiny app visualising shot data for the Womens\nEUROS 2025 using StatsBomb open data. Features interactive shot maps,\nplayer comparison tables, xG vs goals summaries, and explanatory\ncaptions for actionable insights.",
-        "License": "MIT + file LICENSE",
-        "URL": "https://github.com/O-Mohammed/pitch-xg",
-        "BugReports": "https://github.com/O-Mohammed/pitch-xg/issues",
-        "Imports": "bslib,\nconfig,\ndplyr,\nggplot2,\ngolem,\npkgload,\npurrr,\nSBpitch,\nshiny,\nStatsBombR,\ntidyr,\ntidyselect",
-        "Suggests": "spelling,\ntestthat",
-        "RoxygenNote": "7.3.2"
-      }
-    },
     "pkgbuild": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
