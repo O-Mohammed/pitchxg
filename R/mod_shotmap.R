@@ -32,7 +32,6 @@ mod_shotmap_server <- function(id, selected){
 
     plot_shotmap <- function(plot_data){
       
-      
       SBpitch::create_Pitch(grass_colour = "grey30",
                             background_colour = "grey30",
                             line_colour = "grey80")+
@@ -49,28 +48,52 @@ mod_shotmap_server <- function(id, selected){
                        legend.box.just = "centre",
                        legend.background = element_rect(colour = "grey20",
                                                         fill = alpha("grey40", 0.5)),
-                       legend.key = element_rect(fill = NA, colour = NA))+
+                       legend.key = element_rect(fill = NA, colour = NA),
+                       plot.title = element_text(size = 20,
+                                                  face = "bold",
+                                                  #colour = "gold",
+                                                 margin = ggplot2::margin(b = 5))
+                       )+
+        
         ggplot2::guides(fill = ggplot2::guide_legend(override.aes = list(size = 6)))
       
-      
     } 
-    
     
     output$shotmap_1 <- shiny::renderPlot({
       shiny::req(selected$match())
 
-      plot_data <- shot_data[[as.character(selected$match())]][["shot_data"]]
-
-      plot_shotmap(plot_data)
+      selected_match_data <- shot_data[[as.character(selected$match())]]
+      
+      selected_match_shot_data <- selected_match_data[["shot_data"]]
+      
+      home_team_shot_data <- selected_match_shot_data |> 
+        dplyr::filter(possession_team.name %in% paste(selected_match_data[["home_team"]],
+                                                       "Women's"),
+                      !shot.type.name %in% "Penalty"
+        )
+      
+      plot_shotmap(home_team_shot_data)+
+        ggplot2::ggtitle(paste(selected_match_data[["home_team"]],
+                               "Women's"))
       
     })
     
     output$shotmap_2 <- shiny::renderPlot({
       shiny::req(selected$match())
       
-      plot_data <- shot_data[[as.character(selected$match())]][["shot_data"]]
+      selected_match_data <- shot_data[[as.character(selected$match())]]
       
-      plot_shotmap(plot_data)
+      selected_match_shot_data <- selected_match_data[["shot_data"]]
+      
+      away_team_shot_data <- selected_match_shot_data |> 
+        dplyr::filter(possession_team.name %in% paste(selected_match_data[["away_team"]],
+                                                      "Women's"),
+                      !shot.type.name %in% "Penalty"
+        )
+      
+      plot_shotmap(away_team_shot_data)+
+        ggplot2::ggtitle(paste(selected_match_data[["away_team"]],
+                               "Women's"))
       
     })
     
