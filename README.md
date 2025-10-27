@@ -1,66 +1,46 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# `{pitchxg}`
+# pitchxg
 
-<!-- badges: start -->
+## A Shiny app for exploring expected goals (xG) using StatsBomb open data
 
-<!-- badges: end -->
+{pitchxg} is a prototype Shiny app built with `{golem}` for analysing
+shot locations and outcomes on football pitches.  
+It currently visualises matches from the Women’s EURO 2025.
 
-## Installation
+{pitchxg} is in early development (v0.0.0.9000).  
+See Issues for planned features and progress.
 
-You can install the development version of `{pitchxg}` like so:
+------------------------------------------------------------------------
 
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
+## Deployment
 
-## Run
+The app is currently hosted on shinyapps.io for early testing and
+feedback.  
+To minimise compute resources during deployment, all match event data is
+pre-processed and stored as static `.rds` files in `inst/app/data/`.  
+The app reads this data at runtime rather than querying live sources.
 
-You can launch the application by running:
+A future version may include dynamic updates from `{StatsBombR}` once
+performance constraints are addressed.
 
-``` r
-pitchxg::run_app()
-```
+------------------------------------------------------------------------
 
-## About
+## Data
 
-You are reading the doc about version : 0.0.0.9000
+This app uses public event data provided by **StatsBomb Open Data**,
+accessed via the `{StatsBombR}` package.
 
-This README has been compiled on the
+All analysis and visualisation within the app is independent and not
+affiliated with or endorsed by StatsBomb.
 
-``` r
-Sys.time()
-#> [1] "2025-10-18 13:36:20 BST"
-```
+------------------------------------------------------------------------
 
-Here are the tests results and package coverage:
+## Installation & Development
 
-``` r
-devtools::check(quiet = TRUE)
-#> ══ Documenting ═════════════════════════════════════════════════════════════════
-#> ℹ Installed roxygen2 version (7.3.2) doesn't match required (7.1.1)
-#> ✖ `check()` will not re-document this package
-#> ── R CMD check results ───────────────────────────────── pitchxg 0.0.0.9000 ────
-#> Duration: 30.1s
-#> 
-#> ❯ checking DESCRIPTION meta-information ... NOTE
-#>   Non-standard licence specification:
-#>     What license is it under?
-#>   Standardisable: FALSE
-#> 
-#> ❯ checking top-level files ... NOTE
-#>   File
-#>     LICENSE
-#>   is not mentioned in the DESCRIPTION file.
-#> 
-#> 0 errors ✔ | 0 warnings ✔ | 2 notes ✖
-```
+Clone the repository, open the project in RStudio, and run:
 
 ``` r
-covr::package_coverage()
-#> pitchxg Coverage: 0.00%
-#> R/app_config.R: 0.00%
-#> R/app_ui.R: 0.00%
-#> R/run_app.R: 0.00%
+golem::run_dev()
 ```
