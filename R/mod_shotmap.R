@@ -12,15 +12,23 @@ mod_shotmap_ui <- function(id) {
   tagList(
     shiny::fluidRow(
       shiny::column(width = 6, 
+                    shiny::uiOutput(ns("team_name_1"))
+      ),
+      shiny::column(width = 6,
+                    shiny::uiOutput(ns("team_name_2"))
+      )
+    ),
+    shiny::fluidRow(
+      shiny::column(width = 6, 
                     shiny::plotOutput(ns("shotmap_1"))
-                    ),
+      ),
       shiny::column(width = 6,
                     shiny::plotOutput(ns("shotmap_2"))
-    )
+      )
     )
   )
 }
-    
+
 #' shotmap Server Functions
 #'
 #' @noRd 
@@ -29,7 +37,19 @@ mod_shotmap_server <- function(id, selected){
     ns <- session$ns
     
     shot_data <- readRDS("inst/app/data/shots_womens_euro_2025.rds")
-
+    
+    selected_match_data <- shiny::reactive(
+      shot_data[[as.character(selected$match())]]
+    )
+    
+    selected_home_team <- shiny::reactive(
+      paste(selected_match_data()[["home_team"]], "Women's")
+    )
+    
+    selected_away_team <- shiny::reactive(
+      paste(selected_match_data()[["away_team"]], "Women's")
+    )
+    
     plot_shotmap <- function(plot_data){
       
       SBpitch::create_Pitch(grass_colour = "grey30",
@@ -50,59 +70,60 @@ mod_shotmap_server <- function(id, selected){
                                                         fill = alpha("grey40", 0.5)),
                        legend.key = element_rect(fill = NA, colour = NA),
                        plot.title = element_text(size = 20,
-                                                  face = "bold",
-                                                  #colour = "gold",
+                                                 face = "bold",
+                                                 #colour = "gold",
                                                  margin = ggplot2::margin(b = 5))
-                       )+
+        )+
         
         ggplot2::guides(fill = ggplot2::guide_legend(override.aes = list(size = 6)))
       
     } 
     
+    output$team_name_1 <- renderUI({
+      shiny::tags$h3(
+        selected_home_team(),
+        style = "text-align:center;"
+      )
+    })
+    
+    output$team_name_2 <- renderUI({
+      shiny::tags$h3(selected_away_team(),
+                     style = "text-align:center;"
+      )
+    })
+    
     output$shotmap_1 <- shiny::renderPlot({
       shiny::req(selected$match())
-
-      selected_match_data <- shot_data[[as.character(selected$match())]]
       
-      selected_match_shot_data <- selected_match_data[["shot_data"]]
+      selected_match_shot_data <- selected_match_data()[["shot_data"]]
       
       home_team_shot_data <- selected_match_shot_data |> 
-        dplyr::filter(possession_team.name %in% paste(selected_match_data[["home_team"]],
-                                                       "Women's"),
+        dplyr::filter(possession_team.name %in% selected_home_team(),
                       !shot.type.name %in% "Penalty"
         )
       
-      plot_shotmap(home_team_shot_data)+
-        ggplot2::ggtitle(paste(selected_match_data[["home_team"]],
-                               "Women's"))
-      
+      plot_shotmap(home_team_shot_data)
     })
     
     output$shotmap_2 <- shiny::renderPlot({
-      shiny::req(selected$match())
+      shiny::req(selected_match_data())
       
-      selected_match_data <- shot_data[[as.character(selected$match())]]
-      
-      selected_match_shot_data <- selected_match_data[["shot_data"]]
+      selected_match_shot_data <- selected_match_data()[["shot_data"]]
       
       away_team_shot_data <- selected_match_shot_data |> 
-        dplyr::filter(possession_team.name %in% paste(selected_match_data[["away_team"]],
-                                                      "Women's"),
+        dplyr::filter(possession_team.name %in% selected_away_team(),
                       !shot.type.name %in% "Penalty"
         )
       
-      plot_shotmap(away_team_shot_data)+
-        ggplot2::ggtitle(paste(selected_match_data[["away_team"]],
-                               "Women's"))
-      
+      plot_shotmap(away_team_shot_data)
     })
     
     
   })
 }
-    
+
 ## To be copied in the UI
 # mod_shotmap_ui("shotmap_1")
-    
+
 ## To be copied in the server
 # mod_shotmap_server("shotmap_1")
