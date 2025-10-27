@@ -13,47 +13,44 @@ output: github_document
 )
 ```
 
-# `{pitchxg}`
 
-<!-- badges: start -->
-<!-- badges: end -->
+# pitchxg
 
-## Installation
+## A Shiny app for exploring expected goals (xG) using StatsBomb open data
 
-You can install the development version of `{pitchxg}` like so:
+{pitchxg} is a prototype Shiny app built with `{golem}` for analysing shot locations and outcomes on football pitches.  
+It currently visualises matches from the Women’s EURO 2025.
 
-```{r}
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
+{pitchxg} is in early development (v0.0.0.9000).  
+See Issues for planned features and progress.
 
-## Run
+---
 
-You can launch the application by running:
+## Deployment
 
-```{r, eval = FALSE}
-pitchxg::run_app()
-```
+The app is currently hosted on shinyapps.io for early testing and feedback.  
+To minimise compute resources during deployment, all match event data is pre-processed and stored as static `.rds` files in `inst/app/data/`.  
+The app reads this data at runtime rather than querying live sources.
 
-## About
+A future version may include dynamic updates from `{StatsBombR}` once performance constraints are addressed.
 
-You are reading the doc about version : `r golem::pkg_version()`
+---
 
-This README has been compiled on the
+## Data
 
-```{r}
-Sys.time()
-```
+This app uses public event data provided by **StatsBomb Open Data**, accessed 
+via the `{StatsBombR}` package.
 
-Here are the tests results and package coverage:
+All analysis and visualisation within the app is independent and not affiliated
+with or endorsed by StatsBomb.
 
-```{r, error = TRUE}
-devtools::check(quiet = TRUE)
-```
 
-```{r echo = FALSE}
-unloadNamespace("pitchxg")
-```
+---
 
-```{r, error = TRUE}
-covr::package_coverage()
+## Installation & Development
+
+Clone the repository, open the project in RStudio, and run:
+
+```r
+golem::run_dev()
 ```
