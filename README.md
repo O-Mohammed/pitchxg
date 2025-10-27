@@ -18,11 +18,13 @@ It currently visualises matches from the Women’s EURO 2025.
 {pitchxg} is in early development (v0.0.0.9000).  
 See Issues for planned features and progress.
 
+View app [here](https://o-mohammed-pitchxg.share.connect.posit.cloud/).
+
 ------------------------------------------------------------------------
 
 ## Deployment
 
-The app is currently hosted on shinyapps.io for early testing and
+The app is currently hosted on Posit Connect Cloud for early testing and
 feedback.  
 To minimise compute resources during deployment, all match event data is
 pre-processed and stored as static `.rds` files in `inst/app/data/`.  
