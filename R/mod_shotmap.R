@@ -32,10 +32,10 @@ mod_shotmap_server <- function(id, selected){
 
     plot_shotmap <- function(plot_data){
       
-    #  p <- 
-        SBpitch::create_Pitch(grass_colour = "grey30",
-                                 background_colour = "grey30",
-                                 line_colour = "grey80")+
+      
+      SBpitch::create_Pitch(grass_colour = "grey30",
+                            background_colour = "grey30",
+                            line_colour = "grey80")+
         ggplot2::geom_point(data = plot_data,
                             ggplot2::aes(x, y,
                                          fill = goal,
@@ -52,7 +52,7 @@ mod_shotmap_server <- function(id, selected){
                        legend.key = element_rect(fill = NA, colour = NA))+
         ggplot2::guides(fill = ggplot2::guide_legend(override.aes = list(size = 6)))
       
-      #return(p)
+      
     } 
     
     
