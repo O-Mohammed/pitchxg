@@ -1452,30 +1452,14 @@
         "Package": "pitchxg",
         "Title": "Pitch xG",
         "Version": "0.0.0.9000",
-        "Authors@R": "\n    person(\"Ozayr\", \"Mohammed\", , \"ozayr.mohammed@nhs.net\", role = c(\"aut\", \"cre\"))",
-        "Description": "A modular Shiny app visualising shot data for the Womens\n    EUROS 2025 using StatsBomb open data. Features interactive shot maps,\n    player comparison tables, xG vs goals summaries, and explanatory\n    captions for actionable insights.",
+        "Authors@R": "person(\"Ozayr\", \"Mohammed\", , \"ozayr.mohammed@nhs.net\", role = c(\"aut\", \"cre\"))",
+        "Description": "A modular Shiny app visualising shot data for the Womens\nEUROS 2025 using StatsBomb open data. Features interactive shot maps,\nplayer comparison tables, xG vs goals summaries, and explanatory\ncaptions for actionable insights.",
         "License": "MIT + file LICENSE",
         "URL": "https://github.com/O-Mohammed/pitch-xg",
         "BugReports": "https://github.com/O-Mohammed/pitch-xg/issues",
-        "Imports": "bslib, config, dplyr, ggplot2, golem, pkgload, purrr, SBpitch,\nshiny, StatsBombR, tidyr, tidyselect",
-        "Suggests": "spelling, testthat",
-        "RoxygenNote": "7.3.2",
-        "RemoteType": "github",
-        "RemoteHost": "api.github.com",
-        "RemoteRepo": "pitchxg",
-        "RemoteUsername": "O-Mohammed",
-        "RemoteRef": "HEAD",
-        "RemoteSha": "f30d1eb3b45e0edb3e73e9edf4b36b263c3e13ce",
-        "GithubRepo": "pitchxg",
-        "GithubUsername": "O-Mohammed",
-        "GithubRef": "HEAD",
-        "GithubSHA1": "f30d1eb3b45e0edb3e73e9edf4b36b263c3e13ce",
-        "NeedsCompilation": "no",
-        "Packaged": "2025-10-27 19:48:59 UTC; Ozayr.Mohammed",
-        "Author": "Ozayr Mohammed [aut, cre]",
-        "Maintainer": "Ozayr Mohammed <ozayr.mohammed@nhs.net>",
-        "Depends": "R (>= 4.1.0)",
-        "Built": "R 4.5.0; ; 2025-10-27 19:49:00 UTC; windows"
+        "Imports": "bslib,\nconfig,\ndplyr,\nggplot2,\ngolem,\npkgload,\npurrr,\nSBpitch,\nshiny,\nStatsBombR,\ntidyr,\ntidyselect",
+        "Suggests": "spelling,\ntestthat",
+        "RoxygenNote": "7.3.2"
       }
     },
     "pkgbuild": {
@@ -1924,6 +1908,33 @@
         "Built": "R 4.5.1; ; 2025-08-20 02:17:05 UTC; windows"
       }
     },
+    "shinyjs": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "shinyjs",
+        "Title": "Easily Improve the User Experience of Your Shiny Apps in Seconds",
+        "Version": "2.1.0",
+        "Authors@R": "person(\"Dean\", \"Attali\", \n    email = \"daattali@gmail.com\",\n    role = c(\"aut\", \"cre\"),\n    comment= c(ORCID=\"0000-0002-5645-3493\"))",
+        "Description": "Perform common useful JavaScript operations in Shiny apps that will\n    greatly improve your apps without having to know any JavaScript. Examples\n    include: hiding an element, disabling an input, resetting an input back to\n    its original value, delaying code execution by a few seconds, and many more\n    useful functions for both the end user and the developer. 'shinyjs' can also\n    be used to easily call your own custom JavaScript functions from R.",
+        "URL": "https://deanattali.com/shinyjs/",
+        "BugReports": "https://github.com/daattali/shinyjs/issues",
+        "Depends": "R (>= 3.1.0)",
+        "Imports": "digest (>= 0.6.8), jsonlite, shiny (>= 1.0.0)",
+        "Suggests": "htmltools (>= 0.2.9), knitr (>= 1.7), rmarkdown, shinyAce,\nshinydisconnect, testthat (>= 0.9.1)",
+        "License": "MIT + file LICENSE",
+        "VignetteBuilder": "knitr",
+        "RoxygenNote": "7.1.1",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "no",
+        "Packaged": "2021-12-21 11:32:22 UTC; Dean-X1C",
+        "Author": "Dean Attali [aut, cre] (<https://orcid.org/0000-0002-5645-3493>)",
+        "Maintainer": "Dean Attali <daattali@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2021-12-23 10:10:02 UTC",
+        "Built": "R 4.5.0; ; 2025-05-05 02:17:55 UTC; windows"
+      }
+    },
     "sourcetools": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
@@ -2369,6 +2380,9 @@
     "app.R": {
       "checksum": "4749edc2ba8c9c12d357d56169262a92"
     },
+    "CODEOWNERS": {
+      "checksum": "b8c3fccbe215a3c26b63f18348b0b9b8"
+    },
     "data-raw/get_data.R": {
       "checksum": "7519f1acc6cb83e0805045d9a9a055a2"
     },
@@ -2424,7 +2438,7 @@
       "checksum": "1694775e681b1a4cf1ce4d2dda7e0316"
     },
     "R/mod_select_match.R": {
-      "checksum": "b98260dc574b65bd38f0962c54617199"
+      "checksum": "5b46f95785e522b200b6002734003116"
     },
     "R/mod_shotmap.R": {
       "checksum": "eb5126418d89f3f77595f86f856899ae"

@@ -13,13 +13,15 @@ team_names <- readRDS("inst/app/data/teams_womens_euro_2025.rds")
 mod_select_match_ui <- function(id) {
   ns <- NS(id)
   tagList(
+    shinyjs::useShinyjs(),
     shiny::selectInput(ns("select_match"), 
                        label = "Select match",
                        choices = unique(match_data$match_id),
                        selected = "4020846"),
-    shiny::selectInput(ns("select_team"), 
+    shinyjs::disabled(shiny::selectInput(ns("select_team"), 
                        label = "Select team",
                        choices = team_names)
+    )
  
   )
 }
